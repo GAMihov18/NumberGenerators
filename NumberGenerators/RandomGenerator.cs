@@ -8,11 +8,12 @@ public class RandomGenerator<T>(T min, T max, int seed) : INumberGenerator<T>
 
 	private IEnumerable<T> GenerateNumbers()
 	{
-		T value;
+		double minD = double.CreateChecked(min);
+		double maxD = double.CreateChecked(max);
 		while (true)
 		{
-			value = min + max * T.CreateChecked(_random.NextDouble());
-			yield return value;
+			double value = minD + _random.NextDouble() * (maxD - minD);
+			yield return T.CreateTruncating(value);
 		}
 	}
 	
