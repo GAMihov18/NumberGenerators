@@ -1,8 +1,7 @@
 using System.Numerics; 
 namespace NumberGenerators;
 
-public class RandomGenerator<T>(T min, T max, int seed) : INumberGenerator<T>
-	where T : INumber<T>
+public class RandomGenerator<T>(T min, T max, int seed) : INumberGenerator<T> where T : INumber<T>
 {
 	private readonly Random _random = new(seed);
 
